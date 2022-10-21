@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::post('/', function() {
+    request()->merge(['a' => 'c']);
+
+    return request()->all();
+});
+
