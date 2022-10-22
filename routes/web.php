@@ -1,5 +1,6 @@
 <?php
 
+use App\Rules\TestRule;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,8 +17,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::post('/', function() {
+
+Route::post('/', function () {
     request()->merge(['a' => 'c']);
+
+    return request()->all();
+});
+
+Route::post('/validate', function () {
+    request()->validate([
+        'a' => new TestRule(),
+    ]);
 
     return request()->all();
 });
