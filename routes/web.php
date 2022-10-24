@@ -27,7 +27,7 @@ Route::post('/', function () {
 
 Route::post('/validate', function () {
     request()->validate([
-        'a' => new TestRule(),
+        'a' => new TestRule(request()),
     ]);
 
     return request()->all();
