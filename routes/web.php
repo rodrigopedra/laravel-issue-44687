@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TestController;
 use App\Rules\TestRule;
 use Illuminate\Support\Facades\Route;
 
@@ -32,3 +33,4 @@ Route::post('/validate', function () {
     return request()->all();
 });
 
+Route::post('with-controller', [TestController::class, 'test']);
