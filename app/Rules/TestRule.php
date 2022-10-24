@@ -3,6 +3,7 @@
 namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Http\Request;
 
 class TestRule implements Rule
 {
@@ -11,8 +12,9 @@ class TestRule implements Rule
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct(
+        protected Request $request, // <<< added this
+    )    {
         //
     }
 
@@ -26,7 +28,7 @@ class TestRule implements Rule
      */
     public function passes($attribute, $value)
     {
-        request()->merge(['a' => 'c']);
+        $this->request->merge(['a' => 'c']); // <<< changed here
 
         return true;
     }

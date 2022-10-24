@@ -25,7 +25,7 @@ class TestRequest extends FormRequest
     public function rules()
     {
         return [
-            'a' => new TestRule()
+            'a' => new TestRule($this)
         ];
     }
 }
